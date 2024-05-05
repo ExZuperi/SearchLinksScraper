@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Search Links Scraper",
+  "version": "1.0",
+  "permissions": ["activeTab", "tabs", "storage", "downloads"],
+  "browser_action": {
+    "default_icon": "icons/icon128.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.google.com/*"],
+      "js": ["google.js"]
+    },
+    {
+      "matches": ["*://yandex.ru/*"],
+      "js": ["yandex.js"]
+    },
+    {
+      "matches": ["*://www.bing.com/*"],
+      "js": ["bing.js"]
+    },
+    {
+      "matches": ["*://duckduckgo.com/*"],
+      "js": ["duck.js"]
+    }
+  ]
+}
