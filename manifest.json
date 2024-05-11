@@ -1,31 +1,43 @@
 {
   "manifest_version": 2,
   "name": "Search Links Scraper",
-  "version": "1.0",
-  "permissions": ["activeTab", "tabs", "storage", "downloads"],
+  "version": "1.1",
+  "description": "Extension that parses/collects links founded by search engines: Google, Yandex, Bing, DuckDuckGo into a file.",
+  "permissions": ["activeTab", "tabs", "downloads"],
   "browser_action": {
     "default_icon": "icons/icon128.png",
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
   },
   "icons": {
     "128": "icons/icon128.png"
   },
   "content_scripts": [
     {
-      "matches": ["*://www.google.com/*"],
-      "js": ["google.js"]
+      "matches": ["*://www.google.com/search*"],
+      "js": ["engines/google.js"]
     },
     {
-      "matches": ["*://yandex.ru/*"],
-      "js": ["yandex.js"]
+      "matches": ["*://yandex.ru/search/*"],
+      "js": ["engines/yandex.js"]
     },
     {
-      "matches": ["*://www.bing.com/*"],
-      "js": ["bing.js"]
+      "matches": ["*://yandex.com/search/*"],
+      "js": ["engines/yandex.js"]
+    },
+    {
+      "matches": ["*://ya.ru/search/*"],
+      "js": ["engines/yandex.js"]
+    },
+    {
+      "matches": ["*://www.bing.com/search*"],
+      "js": ["engines/bing.js"]
     },
     {
       "matches": ["*://duckduckgo.com/*"],
-      "js": ["duck.js"]
+      "js": ["engines/duck.js"]
     }
   ]
 }
